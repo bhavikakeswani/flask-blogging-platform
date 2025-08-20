@@ -2,6 +2,7 @@ from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash,request
 import os
 import smtplib
+import threading
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
@@ -247,15 +248,27 @@ MAIL_APP_PW = os.environ.get("PASSWORD_KEY")
 def contact():
     if request.method == "POST":
         data = request.form
-        send_email(data["name"], data["email"], data["phone"], data["message"])
-        return render_template("contact.html", msg_sent=True)
+
+        # Run send_email in a background thread
+        threading.Thread(
+            target=send_email,
+            args=(data["name"], data["email"], data["phone"], data["message"])
+        ).start()
+
+        return render_template("contact.html", msg_sent=True, current_user=current_user)
+
     return render_template("contact.html", msg_sent=False, current_user=current_user)
 
 
 def send_email(name, email, phone, message):
-    email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage:{message}"
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(MAIL_ADDRESS, MAIL_APP_PW)
-        connection.sendmail(MAIL_ADDRESS, MAIL_ADDRESS, email_message)
-
+    try:
+        email_message = (
+            f"Subject: New Message\n\n"
+            f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
+        )
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as connection:
+            connection.starttls()
+            connection.login(MAIL_ADDRESS, MAIL_APP_PW)
+            connection.sendmail(MAIL_ADDRESS, MAIL_ADDRESS, email_message)
+    except Exception as e:
+        print("Email failed:", e)
