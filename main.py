@@ -233,6 +233,12 @@ def delete_post(post_id):
 def about():
     return render_template("about.html",current_user=current_user)
 
+@app.route('/older-posts')
+def older_posts():
+    today = date.today().strftime("%B %d, %Y")
+    result = db.session.execute(db.select(BlogPost).where(BlogPost.date != today).order_by(BlogPost.date.desc()))
+    posts = result.scalars().all()
+    return render_template("older-posts.html", all_posts=posts,current_user=current_user)
 
 MAIL_ADDRESS = os.environ.get("EMAIL_KEY")
 MAIL_APP_PW = os.environ.get("PASSWORD_KEY")
