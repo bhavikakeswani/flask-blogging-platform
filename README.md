@@ -58,3 +58,8 @@ http://127.0.0.1:5000
 1. Add categories/tags for blog posts
 2. Improve comment system (nested replies, likes)
 3. Add user profile pages
+
+### 📽 Video Demo
+
+https://github.com/user-attachments/assets/dd39bedc-9e0c-42a9-a10e-4a0b1a126330
+
