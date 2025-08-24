@@ -4,6 +4,8 @@ A full-featured blogging website built with **Flask** and **Bootstrap**, featuri
 
 🔗 **Live Demo:** [https://flask-blogging-platform-cjav.onrender.com](https://flask-blogging-platform-cjav.onrender.com)
 
+---
+
 ## ✨ Features
 - **User Authentication** → Register, Login, Logout  
 - **Role-Based Access Control**  
@@ -17,11 +19,15 @@ A full-featured blogging website built with **Flask** and **Bootstrap**, featuri
 - SQLite database for local development  
 - PostgreSQL database for production deployment  
 
+---
+
 ## 🛠 Tech Stack
 - **Backend:** Flask (Python 3.12.5)  
 - **Frontend:** HTML, CSS, Bootstrap  
 - **Database:** SQLite (local) / PostgreSQL (deployed)  
 - **Templating Engine:** Jinja2  
+
+---
 
 ## 🚀 Getting Started
 
@@ -54,12 +60,23 @@ https://github.com/user-attachments/assets/b4c64e6c-24a0-40ef-ba00-4e40193c7fdf
 5. Open in your browser:
 http://127.0.0.1:5000
 
+---
+
 ### 📌 Future Improvements
 1. Add categories/tags for blog posts
 2. Improve comment system (nested replies, likes)
 3. Add user profile pages
 
+---
+
 ### 📽 Video Demo
 
 https://github.com/user-attachments/assets/dd39bedc-9e0c-42a9-a10e-4a0b1a126330
 
+---
+
+### License
+This project is licensed under the MIT License.
+
+---
+---
