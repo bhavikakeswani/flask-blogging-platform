@@ -2,8 +2,6 @@
 
 A full-featured blogging website built with **Flask** and **Bootstrap**, featuring user authentication, role-based access control, and blog interaction features.  
 
-🔗 **Live Demo:** [https://flask-blogging-platform-cjav.onrender.com](https://flask-blogging-platform-cjav.onrender.com)
-
 ---
 
 ## ✨ Features
